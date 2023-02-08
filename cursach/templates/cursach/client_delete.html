@@ -1,0 +1,18 @@
+{% extends 'cursach/base.html' %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-4">
+            <div class="card">
+                <div class="card-body">
+                    <form method="post">
+                        {% csrf_token %}
+                        <a href="{% url 'cursach:cursach' %}">Отмена</a>
+                        <button type="submit">Удалить</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

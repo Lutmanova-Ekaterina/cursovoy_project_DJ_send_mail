@@ -1,0 +1,56 @@
+{% extends 'cursach/base.html' %}
+
+{% block content %}
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-primery border-bottom box-shadow">
+        <h5 class="my-0 mr-md-auto font-weight-normal">Сервис</h5>
+        <nav class="ms-5">
+            <a class="p-2 btn btn-info" href="{% url 'cursach:create_mailing' %}">Создать рассылку</a>
+            <a class="btn btn-info" href="{% url 'cursach:status' %}">Статус отправки</a>
+        </nav>
+    </div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Клиент</th>
+                <th scope="col">Начальная дата</th>
+                <th scope="col">Конечная дата</th>
+                <th scope="col">Время рассылки</th>
+                <th scope="col">Периодичность</th>
+                <th scope="col">Статус рассылки</th>
+                <th scope="col">Тема письма</th>
+                <th scope="col">Содержание письма</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for object in object_list %}
+                <tr>
+                    <td>
+                        <a href="{% url 'cursach:letter_detail' object.pk %}">
+                            #{{ object.pk }}
+                        </a>
+                    </td>
+                    <td>{{ object.letter_topic }}</td>
+                    <td>{{ object.letter_body }}</td>
+                    <td>
+                        <a class="btn btn-info" href="{% url 'cursach:mailing_detail' object.pk %}">
+                            #{{ object.pk }}
+                        </a>
+                    </td>
+                    <td>{{ object.client.email }}</td>
+                    <td>{{ object.start_date }}</td>
+                    <td>{{ object.end_date }}</td>
+                    <td>{{ object.time_of_mailing }}</td>
+                    <td>{{ object.periodicity }}</td>
+                    <td>{{ object.mailing_status }}</td>
+                    <td>{{ object.message.letter_topic }}</td>
+                    <td>{{ object.message.letter_body }}</td>
+                    <td>
+                        <a class="btn btn-info" href="{% url 'cursach:mailing_update' object.pk %}">Update</a>
+                        <a class="btn btn-danger" href="{% url 'cursach:mailing_delete' object.pk %}">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+{% endblock %}

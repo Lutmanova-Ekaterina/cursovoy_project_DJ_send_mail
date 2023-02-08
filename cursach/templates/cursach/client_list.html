@@ -1,0 +1,38 @@
+{% extends 'cursach/base.html' %}
+
+{% block content %}
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-primery border-bottom box-shadow">
+        <h5 class="my-0 mr-md-auto font-weight-normal">Сервис</h5>
+        <nav class="ms-5">
+            <a class="p-2 btn btn-info" href="{% url 'cursach:create_client' %}">Создать клиента</a>
+        </nav>
+    </div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Контактная почта</th>
+                <th scope="col">ФИО</th>
+                <th scope="col">Комментарий</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for object in object_list %}
+                <tr>
+                    <td>
+                        <a href="{% url 'cursach:client_detail' object.pk %}">
+                            #{{ object.pk }}
+                        </a>
+                    </td>
+                    <td>{{ object.email }}</td>
+                    <td>{{ object.full_name }}</td>
+                    <td>{{ object.comment }}</td>
+                    <td>
+                        <a class="btn btn-info" href="{% url 'cursach:client_update' object.pk %}">Update</a>
+                        <a class="btn btn-danger" href="{% url 'cursach:client_delete' object.pk %}">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+{% endblock %}

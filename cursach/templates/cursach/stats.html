@@ -1,0 +1,29 @@
+{% extends 'cursach/base.html' %}
+
+{% block content %}
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-primary border-bottom box-shadow">
+    <h5 class="my-0 mr-md-auto font-weight-normal">Сервис</h5>
+</div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Дата и время попытки</th>
+            <th scope="col">Статус попытки</th>
+            <th scope="col">Ответ сервера</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for object in object_list %}
+            <tr>
+                <td> {{ object.id }}</td>
+                <td> {{ object.date }}</td>
+                <td> {{ object.status }}</td>
+                <td> {{ object.answer }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
+

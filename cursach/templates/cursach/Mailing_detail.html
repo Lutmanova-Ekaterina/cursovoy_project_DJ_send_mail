@@ -1,0 +1,47 @@
+{% extends 'cursach/base.html' %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-4">
+            <div class="card">
+                <div class="card-body">
+                    <table class="table">
+                        <tr>
+                            <td>Клиент</td>
+                            <td>{{ object.client.email }}</td>
+                        </tr>
+                        <tr>
+                            <td>Начальная дата</td>
+                            <td>{{ object.start_date }}</td>
+                        </tr>
+                        <tr>
+                            <td>Конечная дата</td>
+                            <td>{{ object.end_date }}</td>
+                        </tr>
+                        <tr>
+                            <td>Время отправки</td>
+                            <td>{{ object.time_of_mailing }}</td>
+                        </tr>
+                        <tr>
+                            <td>Периодичность</td>
+                            <td>{{ object.periodicity }}</td>
+                        </tr>
+                        <tr>
+                            <td>Статус рассылки</td>
+                            <td>{{ object.mailing_status }}</td>
+                        </tr>
+                        <tr>
+                            <td>Тема письма</td>
+                            <td>{{ object.message.letter_topic }}</td>
+                        </tr>
+                        <tr>
+                            <td>Содержание письма</td>
+                            <td>{{ object.message.letter_body }}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
