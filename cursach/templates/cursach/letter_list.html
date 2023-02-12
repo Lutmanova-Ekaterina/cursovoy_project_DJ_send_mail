@@ -4,7 +4,7 @@
     <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-primery border-bottom box-shadow">
         <h5 class="my-0 mr-md-auto font-weight-normal">Сервис</h5>
         <nav class="ms-5">
-            <a class="p-2 btn btn-info" href="{% url 'cursach:letter_create' %}">Создать письмо</a>
+            <a class="p-2 btn btn-info" href="{% url 'cursach:letter_list' %}">Создать письмо</a>
         </nav>
     </div>
         <table class="table">
@@ -26,7 +26,7 @@
                     <td>{{ object.letter_topic }}</td>
                     <td>{{ object.letter_body }}</td>
                     <td>
-                        <a class="btn btn-info" href="{% url 'cursach:letter_update' object.pk %}">Update</a>
+                        <a class="btn btn-info" href="{% url 'cursach:letter_form' object.pk %}">Update</a>
                         <a class="btn btn-danger" href="{% url 'cursach:letter_delete' object.pk %}">Delete</a>
                     </td>
                 </tr>
